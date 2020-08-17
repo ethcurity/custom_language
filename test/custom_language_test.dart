@@ -28,8 +28,10 @@ void main() {
 
     print(langModel.join(':', values: productName));
 
-    /// the below example demonstrates how you can use order changes
+    /// the below example demonstrates how you can use order changes among you language dependencies
     print(langModel.get('orderChange', append: [10, 20]));
     print(otherLangModel.get('orderChange', append: [10, 20]));
+
+    
   });
 }
