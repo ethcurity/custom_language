@@ -13,7 +13,9 @@ class LangAmharic extends LanguageInstance {
   init() {
     langValues = [
       LangModel('hello', 'ሰላም $replaceString'),
-      LangModel('itemsAdded', '$replaceString እቃ(ዎችን) አክለዋል')
+      LangModel('itemsAdded', '$replaceString እቃ(ዎችን) አክለዋል'),
+      LangModel('congra', 'እንኳን ደስ አለዎት'),
+      LangModel('orderChange', '$replaceString እና $replaceString', order: [1, 0])
     ];
   }
 }

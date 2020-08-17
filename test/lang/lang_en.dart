@@ -13,7 +13,9 @@ class LangEnglish extends LanguageInstance {
   init() {
     langValues = [
       LangModel('hello', 'Hello $replaceString'),
-      LangModel('itemsAdded', 'You have added $replaceString item(s)')
+      LangModel('itemsAdded', 'You have added $replaceString item(s)'),
+      LangModel('congra', 'Congratulations'),
+      LangModel('orderChange', '$replaceString and $replaceString')
     ];
   }
 }

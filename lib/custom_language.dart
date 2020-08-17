@@ -68,10 +68,33 @@ abstract class CustomLanguage {
   /// String currencyValue = langModel.get('itemsAdded', append: ['10']);
   /// ```
   /// if the currently selected language is `English` the value for `currencyValue` will be `You have added 10 item(s)`
-  /// if the currently selected language is `Amharic` the value for `currencyValue` will be `10 እቃ(ዎችን) አክለዋል`
+  /// if the currently selected language is `Amharic` the value for `currencyValue` will be `10 እቃ(ዎችን) አክለዋል`,
+  /// 
+  /// you can add multiple apped values if you want like this
+  /// but inorder to get the value `hello` you need to add another `$replaceString` in between the values like this
+  /// 
+  /// `You have added $replaceString item(s) and the price is $replaceString Birr`
+  /// 
+  /// ```dart
+  /// String currencyValue = langModel.get('itemsAdded', append: ['10', '270']);
+  /// ```
+  /// so the output will look like
+  /// `You have added 10 item(s) and the price is 270 Birr`
+  /// the above value is appended respectively but if we want to append the in order we want we can add the order parameter
+  /// 
   String get(String langKey, {String alt = '', List<dynamic> append = const []}) {
+    List<dynamic> newAppend = new List<dynamic>();
     try {
-      String retValue = langValues.firstWhere((i) => i.key == "$langKey").value.toString();
+      LangModel currentLanguage = langValues.firstWhere((i) => i.key == "$langKey");
+      String retValue = currentLanguage.value.toString();
+      
+      if(currentLanguage.order.length != 0 && currentLanguage.order.length == append.length) {
+        currentLanguage.order.forEach((order) {
+          newAppend.add(append.elementAt(order));
+        });
+        append = newAppend;
+      }
+      
       append.forEach((appendable) {
         retValue = retValue.replaceFirst('$replaceString', appendable.toString());
       });

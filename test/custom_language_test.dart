@@ -8,7 +8,12 @@ import 'lang/language_test.dart';
 void main() {
   test('adds one to input values', () {
     CustomLanguage langModel = LanguageModel(langCode: 'en')..setCurrentLanguage();
+
+    // Value with appendable values added
     print(langModel.get('hello', append: ['Ethcurity']));
+
+    // Value without appendable values added
+    print(langModel.get('congra'));
 
     CustomLanguage otherLangModel = langModel.withCode(langCode: 'am');
     print(otherLangModel.get('hello', append: ['Ethcurity']));
@@ -22,5 +27,9 @@ void main() {
     print(otherLangModel.set(productName));
 
     print(langModel.join(':', values: productName));
+
+    /// the below example demonstrates how you can use order changes
+    print(langModel.get('orderChange', append: [10, 20]));
+    print(otherLangModel.get('orderChange', append: [10, 20]));
   });
 }
