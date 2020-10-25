@@ -17,7 +17,7 @@ Add to pubspec.yaml file
 
 ```sh
 dependencies:
-  custom_language: ^1.0.0
+  custom_language: ^1.0.1
 ```
 # Import
 
